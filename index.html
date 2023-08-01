@@ -12,6 +12,7 @@
       crossorigin="anonymous"
     />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -23,36 +24,50 @@
       crossorigin="anonymous"
     ></script>
     <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <div class="container">
       <h1 align="center">TODO LIST</h1>
 
-      <!-- input box -->
       <div class="row">
-        <div class="col">
+        <!-- input box -->
+        <div class="col-md-8">
           <div class="form-group">
             <label for="inpNewTask">New Task</label>
             <input type="text" class="form-control" id="inpNewTask" aria-describedby="newTaskHelp" placeholder="Enter New Task here" />
             <small id="newTaskHelp" class="form-text form-muted">A short description of the task</small>
           </div>
         </div>
+
+        <!-- buttons -->
+        <div class="col-md-4">
+          <div class="row">
+            <button class="btn btn-success col m-2" id="btnAdd">
+              <i class="fa-solid fa-plus" style="color: white"></i> Add</i>
+            </button>
+            <button class="btn btn-danger col m-2" id="btnReset">
+              <i class="fa-solid fa-delete-left" style="color: #ffffff;"></i> Reset</i>
+            </button>
+
+          </div>
+          <div class="row">
+            <button class="btn btn-info col m-2" id="btnSort">
+              <i class="fa-solid fa-arrow-down-wide-short" style="color: #ffffff;"></i></i> Sort</i>
+            </button>
+            <button class="btn btn-warning col m-2" id="btnCleanup">
+              <i class="fa-solid fa-trash" style="color: #ffffff;"></i> Cleanup</i>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <!-- buttons -->
-      <div class="row px-4">
-        <button class="btn btn-success col m-2" id="btnAdd">Add</button>
-        <button class="btn btn-danger col m-2" id="btnClear">Clear</button>
-      </div>
 
       <!-- todo list -->
       <ul class="row list-group m-2" id="ulTasks">
         <li class="list-group-item">An item</li>
         <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
       </ul>
     </div>
   </body>
