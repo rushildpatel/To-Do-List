@@ -1,44 +1,49 @@
+let ulTasks = $("#ulTasks");
 let btnAdd = $("#btnAdd");
 let btnReset = $("#btnReset");
-let btnCLeanup = $("#btnCleanup");
-let ulTasks = $("#ulTasks");
-let inpNewTask = $("#inpNewTask");
 let btnSort = $("#btnSort");
+let btnCleanup = $("#btnCleanup");
+let inpNewTask = $("#inpNewTask");
 
 function addItem() {
   let listItem = $("<li>", {
     class: "list-group-item",
     text: inpNewTask.val(),
   });
-
   listItem.click(() => {
-    // console.log("clicked");
     listItem.toggleClass("done");
   });
-
   ulTasks.append(listItem);
-  // console.log(inpNewTask.val());
   inpNewTask.val("");
+  toggleInputButtons();
 }
 
 function clearDone() {
   $("#ulTasks .done").remove();
+  toggleInputButtons();
 }
 
 function sortTasks() {
   $("#ulTasks .done").appendTo(ulTasks);
 }
 
-inpNewTask.keypress((e) => {
-  if (e.which == 13) {
-    addItem();
-  }
-});
+function toggleInputButtons() {
+  btnReset.prop("disabled", inpNewTask.val() == "");
+  btnAdd.prop("disabled", inpNewTask.val() == "");
+  btnSort.prop("disabled", ulTasks.children().length < 1);
+  btnCleanup.prop("disabled", ulTasks.children().length < 1);
+}
 
-btnCLeanup.click(clearDone);
+inpNewTask.keypress((e) => {
+  if (e.which == 13) addItem();
+});
+inpNewTask.on("input", toggleInputButtons);
 
 btnAdd.click(addItem);
-
 btnReset.click(() => inpNewTask.val(""));
-
+btnReset.click(() => {
+  inpNewTask.val("");
+  toggleInputButtons();
+});
+btnCleanup.click(clearDone);
 btnSort.click(sortTasks);
